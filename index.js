@@ -192,8 +192,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-
-
 // register endpoint
 app.post('/register', async (req, res) => {
   const { username, password, role } = req.body;
@@ -439,12 +437,16 @@ app.get('/perdin/:id/biaya', isAuthenticated, (req, res) => {
     )
 
 
-    res.status(200).json({ biaya: biaya });
+    res.status(200).json({
+      jarak : distance, 
+      biaya: biaya
+    });
   });
 });
 
 // Helper function to convert degrees to radians
 function deg2rad(deg) {
+  // menghitung jarak antara dua titik di permukaan bumi menggunakan rumus Haversine.
   return deg * (Math.PI/180);
 }
 
